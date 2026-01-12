@@ -9,7 +9,11 @@
 
 ---
 
-### **[Acesse a demonstração ao vivo aqui!]**(link-para-o-streamlit-cloud-aqui)
+<a href="https://workbenchsistemaslineares.streamlit.app/" target="_blank">
+    <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Streamlit App" />
+</a>
+
+**Acesse a demonstração ao vivo em:** [https://workbenchsistemaslineares.streamlit.app/](https://workbenchsistemaslineares.streamlit.app/)
 
 ---
 
@@ -19,13 +23,21 @@ Este projeto é um **ambiente de aprendizado interativo** (workbench) construíd
 
 O objetivo é **capacitar e educar**, não apenas automatizar o cálculo. O estudante mantém controle total do processo, enquanto o sistema oferece validação matemática, feedback instantâneo e ferramentas para facilitar a prática.
 
-## 2. O Curso de Verão IME-USP (2026)
+## 2. Como Obter um Relatório em 3 Passos
+
+Para obter um relatório completo da resolução de um sistema, siga estes passos simples:
+
+1.  **Clique e Digite/Gere:** Acesse o link da aplicação, e no menu lateral, **digite** seu sistema de equações ou **gere** um sistema aleatório com as configurações desejadas. Clique em **"Analisar Sistema"**.
+2.  **Resolva o Sistema:** Na área principal, aplique as **operações elementares** linha por linha para escalonar a matriz até a sua forma escalonada reduzida.
+3.  **Copie o Relatório:** Ao final do processo, expanda a seção **"Ver Resolução Completa"** na parte inferior da página para visualizar e copiar um relatório detalhado com todas as etapas da solução.
+
+## 3. O Curso de Verão IME-USP (2026)
 
 A inspiração para este projeto nasceu da experiência no curso de verão de **Álgebra Linear** de 2026, ministrado pelo Professor **Heitor [Sobrenome a ser confirmado]** no Instituto de Matemática e Estatística da Universidade de São Paulo (IME-USP).
 
 O curso enfatiza a compreensão profunda dos conceitos fundamentais, como o escalonamento de matrizes e o Teorema de Rouché-Capelli, que são a base para a análise e resolução de sistemas lineares. Esta ferramenta busca digitalizar e enriquecer a experiência de aprendizado proposta em sala de aula, permitindo que alunos e entusiastas possam praticar e visualizar esses conceitos de forma dinâmica.
 
-## 3. Funcionalidades Principais
+## 4. Funcionalidades Principais
 
 - **Resolução Interativa:** Aplique as três operações elementares de linha (Troca, Multiplicação por Escalar, Combinação Linear) e veja o impacto imediato na matriz aumentada.
 - **Gerador de Sistemas:** Crie sistemas de equações aleatórios, configurando o número de variáveis, o tipo de coeficientes (reais, complexos, frações, raízes) e o tipo de solução (SPD, SPI, SI).
@@ -33,9 +45,9 @@ O curso enfatiza a compreensão profunda dos conceitos fundamentais, como o esca
 - **Histórico de Operações:** Desfaça e refaça passos, permitindo a exploração de diferentes estratégias de resolução sem perder o trabalho anterior.
 - **Relatório de Resolução:** Ao final, obtenha um relatório completo com todas as etapas, desde o sistema original até a solução, pronto para ser copiado e compartilhado.
 
-## 4. Como Usar
+## 5. Como Usar Localmente
 
-Para executar este projeto localmente, siga os passos abaixo:
+Para executar este projeto em sua máquina, siga os passos abaixo:
 
 1.  **Clone o repositório:**
     ```bash
@@ -59,23 +71,22 @@ Para executar este projeto localmente, siga os passos abaixo:
     streamlit run app.py
     ```
 
-## 5. Próximos Passos e Roadmap
+## 6. Próximos Passos e Roadmap
 
 A visão para o futuro deste projeto é torná-lo uma ferramenta pedagógica ainda mais robusta e versátil.
 
-- **Publicação na Streamlit Community Cloud:** O próximo passo imediato é disponibilizar a aplicação online para acesso público.
+- **Download da Resolução:** Implementar uma funcionalidade para que o usuário possa baixar o relatório completo da resolução (sistema, análise e solução) em formatos como `.txt` e `.md`.
 - **Melhorias na Interface:** Aprimorar a experiência do usuário com destaques visuais para pivôs, uma linguagem técnica mais padronizada e uma melhor renderização de equações em LaTeX.
 - **Modos de Uso ("Aluno" e "Professor"):** Implementar um modo "Professor" que oculte as dicas automáticas, permitindo que a ferramenta seja usada para avaliações ou demonstrações.
-- **Exportação de Relatórios:** Adicionar a funcionalidade de exportar a resolução completa para formatos como Markdown, LaTeX e PDF.
 - **Aplicações Práticas:** Criar uma seção com exemplos de sistemas lineares aplicados a problemas reais em áreas como engenharia, física e ciência da computação.
 
-## 6. Como Contribuir
+## 7. Como Contribuir
 
 Este é um projeto de código aberto e acadêmico. Sugestões, ideias e contribuições são muito bem-vindas! Se você tem uma ideia para uma nova funcionalidade, uma aplicação interessante ou encontrou um bug, sinta-se à vontade para:
 
 -   **Abrir uma [Issue](https://github.com/Edamas/Workbench_Sistemas_Lineares/issues)** para discutir sua ideia.
 -   **Enviar um [Pull Request](https://github.com/Edamas/Workbench_Sistemas_Lineares/pulls)** com suas melhorias.
 
-## 7. Licença
+## 8. Licença
 
 Este projeto está licenciado sob a **Licença MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
