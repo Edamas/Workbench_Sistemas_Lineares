@@ -1,0 +1,21 @@
+7. Álgebra Linear
+Esse curso terá aulas (presenciais) no IME-USP: Como chegar ao IME-USP?
+Descrição: Vetores no R<sup>n</sup>. Espaços vetoriais, subespaços. Transformações lineares e matrizes. Semelhanças e Diagonalização. Determinantes. Produto interno e ortogonalidade.
+Requisito: Primeiro ano de graduação completo em curso de Ciências Exatas. Conhecer Geometria Analítica e Cálculo Diferencial e Integral em uma variável.
+Público: Estudantes de graduação em Ciências Exatas.
+
+Carga horária: 60h
+
+Professor: Heitor Ribeiro de Assis
+
+Horário: Segunda, Terça, Quarta, Quinta e Sexta das 10:00 às 12:00;
+
+Sala: ?
+
+Período Inicial: 05/01/2026
+
+Período Final: 13/02/2026
+
+Taxa: R$ 70,00
+
+Vagas: 75
