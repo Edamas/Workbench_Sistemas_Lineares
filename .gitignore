@@ -1,2 +1,11 @@
 __pycache__/
 backups/
+.idea/
+.vscode/
+*.jpeg
+*.png
+!curso/lista de exercícios 1 - pág 1.png
+!curso/Álgebra Linear.png
+
+# Ignore all pdf files in the root directory
+/*.pdf
