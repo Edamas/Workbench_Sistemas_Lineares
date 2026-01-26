@@ -78,7 +78,13 @@ def parse_system_input(text_input):
     try:
         expr = parse_expr(full_processed_text, local_dict={'I': sympy.I, 'i': sympy.I, 'sqrt': sympy.sqrt}, transformations=detect_transformations, evaluate=False)
         
-        for s in sorted(list(expr.free_symbols), key=str):
+        # Use a natural sort key to handle variables like x1, x2, x10 correctly
+        def natural_sort_key(s):
+            return [int(text) if text.isdigit() else text.lower() for text in re.split('([0-9]+)', str(s))]
+
+        sorted_symbols = sorted(list(expr.free_symbols), key=natural_sort_key)
+
+        for s in sorted_symbols:
             if s != sympy.I and isinstance(s, sympy.Symbol): 
                 if str(s) not in all_symbols_in_order:
                     all_symbols_in_order[str(s)] = s 
@@ -101,6 +107,7 @@ def parse_system_input(text_input):
             lhs_expr_parsed = parse_to_sympy(lhs_str)
             rhs_expr_parsed = parse_to_sympy(rhs_str)
             
+            # This is where the TypeError for tuples occurs
             equation_expr = lhs_expr_parsed - rhs_expr_parsed
             
             for j, var_symbol in enumerate(sympy_variables):
@@ -109,6 +116,13 @@ def parse_system_input(text_input):
             constant_term = equation_expr.as_independent(*sympy_variables)[0]
             matrix_np[i, -1] = -constant_term 
 
+        except TypeError as e:
+            if "unsupported operand type(s) for -" in str(e):
+                error_msg = f"Na linha {i+1}: A notação de vetores/tuplas como `(a,b)` não é suportada para definir equações. Por favor, insira equações lineares padrão (ex: 3x + 2y = 5)."
+                return None, None, error_msg
+            else:
+                # Re-raise other TypeErrors
+                return None, None, f"Erro de tipo inesperado na linha {i+1}: {e}"
         except Exception as e:
             return None, None, f"Erro ao extrair coeficientes da equação '{eq_str}': {e}"
 

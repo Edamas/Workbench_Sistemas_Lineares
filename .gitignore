@@ -9,3 +9,8 @@ backups/
 
 # Ignore all pdf files in the root directory
 /*.pdf
+
+# Generated output directories
+html_output/
+markdown_output/
+output/
