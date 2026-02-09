@@ -1,0 +1,172 @@
+Segunda Lista de Exercícios - Álgebra			
+Linear (verão 2026)			
+Espaços Vetoriais e Transformações Lineares			
+Escolhidos para entrega: P.4 (b) (c), P.5 (a) (b), P.9, P.12, P.14, P.21, P.23 (c) (d), P.27, P.34.			
+			
+			
+P.4 Em cada um dos casos, verifique se o conjunto W contido no espaço vetorial V é um subespaço do espaço vetorial V .			
+Lembre-se que F é sempre R ou C, não havendo distinção entre os dois casos na resolução. 			
+Por isto denotamos os dois conjuntos pelas mesmas letras.			
+O conjunto P(F) é formado pelos polinômios (de qualquer grau) com coeficientes em F.			
+			
+(a)	W = {(x, y, z) ∈ F³ | x = 0}, V = F³		
+	contém valor nulo	(0, 0, 0) ∈ W	(ok)
+	fechado sob adição	(0, y1, z1) + (0, y2, z2) = (0, y1 + y2, z1 + z2) ∈ W	(ok)
+	fechado sob multiplicação	λ(0, y, z) = (0, λy, λz) ∈ W	(ok)
+	Resposta:	É subespaço	
+	Observações:	Conjunto definido por equação linear homogênea.	
+			
+(b)	W = {(x, y, z) ∈ F³ | x ∈ Z}, V = F³		
+	contém valor nulo	(0, 0, 0)	(ok)
+	fechado sob adição	(1, 0, 0) pertence a W e (1, 0, 0) pertence a W	
+		(1, 0, 0) + (1, 0, 0) = (2, 0, 0) -> pertence a W	(ok)
+	fechado sob multiplicação	(1, 0, 0) ∈ W e λ = 1/2	
+		(1/2) * (1, 0, 0) = (1/2, 0, 0) [não pertence a] W	(não ok)
+	Resposta:	Não é subespaço	
+	Observações: 	Fallha no fechamento por multiplicação escalar em R.	
+			
+(c)	W = {p(t) [pertence a] P(F) | deg(p) >= 2}, V = F³		
+	contém valor nulo	p(t) = 0, grau indefinido (deg(p) < 2)	(não ok)
+	fechado sob adição	p(t) = t² e q(t) = -t² -> p + q = t² - t² = 0 (deg<2)	(não ok)
+	fechado sob multiplicação	p(t) = t²  e lambda = 0 -> 0p = 0 (deg<2)	(não ok)
+	Resposta:	Não é subespaço	
+	Observação:	Condição "Grau maior ou igual a 2" não é respeitada	
+			
+(d)	W = {f [pertence a] C1(R) | f(t) + f'(t) = 0, [para todo]t, V = C1(R, R)		
+	contém valor nulo	f(0) + f'(0) = 0 + 0 = 0	(ok)
+	fechado sob adição	f(0) + f'(0) = 0, g(0) + g'(0) = 0	
+		(f + g)' = f' + g' = 0	
+		(f + g) + (f + g)' = 0	(ok)
+	fechado sob multiplicação	f + f' = 0	
+		(alpha*f)' = alpha * f'	
+		alpha * f + (alpha * f) ' = alpha (f + f') = 0	(ok)
+	Resposta:	É subespaço	
+	Observação:	Fechado sob multiplicação para todo t e alpha	
+			
+P.5 Sabemos que M(n, F), o conjunto das matrizes de ordem n com coeficientes em F, é um espaço vetorial.			
+Verifique se os seguintes subconjuntos de M(n, F) são subespaços vetoriais.			
+			
+(a) 	W1 = {A pertence a M(n, F) | tr A = [somatório de i=1 a n] a_ii = 0}		
+		exemplo: [[0, 3, 3], [3, 0, 3], [3, 3, 0]]	
+	contém valor nulo	tr(0) = 0 (matriz nula)	(ok)
+	fechado sob adição	tr(A) = 0, tr(B) = 0 -> tr(A + B) = tr(A) + tr(B) = 0	(ok)
+	fechado sob multiplicação	tr(A) = 0 ⇒ tr(αA) = α tr(A) = 0	(ok)
+	Resposta:	É subespaço	
+	Observação:	Definido por condição linear homogênea	
+			
+(b)	W2 = {A [pertence a] M(n, F) | det(A) = 0}		
+	contém valor nulo	det(0) = 0	(ok)
+	fechado sob adição	det(A) + det(B) = 0, mas det(A + B) pode ser diferente de 0	(não ok)
+	fechado sob multiplicação	alpha * det(A)  = alpha * 0 = 0; det(alpha * A) = 0	(ok)
+	Resposta:	Não é subespaço	
+	Observação:	Condição não linear (determinante)	
+			
+(c)	W3 = {A ∈ M(n, F) | a_ij = 0, se i > j}		
+	contém valor nulo	A = matriz nula = 0	(ok)
+	fechado sob adição	soma de matrizes triangulares superiores é triangular superior	(ok)
+	fechado sob multiplicação	alpha * A mantém zeros abaixo da diagonal	(ok)
+	Resposta:	É subespaço	
+	Observação:	Definido por restrições lineares nas entradas	
+			
+(d)	W5 = {A ∈ M(n, F) | A é inversível}		
+	Contém valor nulo	A matriz nula 0 não é inversível, pois det(0) = 0	(não ok)
+	fechado sob adição	Se A = I e B = -I, ambas são inversíveis, mas A + B = 0 (não inversível)	(não ok)
+	fechado sob multiplicação	Para o escalar alpha = 0, temos 0 * A, o que não é inversível (det(A) = 0)	(não ok)
+	Resposta:	Não é subespaço	
+	Observação:	Conjunto aberto, não linear	
+			
+(e)	W6 = {A ∈ M(n, F) | AB = BA}, V = M(n, F), para uma matriz B ∈ M(n, F) fixa		
+	contém valor nulo	0 pertence a M(n, F) satisfaz 0 * B = 0 e B * 0 = 0, logo 0B = B0	(ok)
+	fechado sob adição	Se AB = BA e CB = BC, então (A + C)B = AB + CB = BA + BC = B (A + C)	(ok)
+	fechado sob multiplicação	AB = BA ⇒ (alpha * A)B = B(alpha * A)	(ok)
+	Resposta:	É subespaço	
+	Observação:	Conjunto comutante de B (centralizador)	
+			
+P.9 Ache a dimensão e uma base para os espaços solução dos sistemas lineares homogêneos.			
+			
+(a)	x + y + z + w - t = 0		
+	x - y - z + 2w - t = 0		
+			
+	"1, 1, 1, 1, -1 | 0
+1, -1, -1, 2, -1 | 0"	matriz aumentada	
+	"1, 1, 1, 1, -1 | 0
+0, -2, -2, 1, 0 | 0"	II - I -> II	
+	"1, 1, 1, 1, -1 | 0
+0, 1, 1, -1/2, 0 | 0"	(-1/2) * II -> II	
+	"1, 0, 0, 3/2, -1 | 0
+0, 1, 1, -1/2, 0 | 0"	I - II -> I	
+	x + (3/2)w - t = 0	x = -(3/2)w + t	
+	y + z - (1/2)w = 0	y = -z + (1/2)w	
+		z = z	
+		w = w	
+		t = t	
+	Solução geral	((-3/2)w + t, -z + (1/2)w, z, w, t)	
+	Variáveis livres	3 (z, w, t)	
+	Dimensões	3	
+	z	(0, -1, 1, 0, 0)	
+	w	(-3/2, 1/2, 0, 1, 0)	
+	t	(1, 0, 0, 0, 1)	
+	Base	((0, -1, 1, 0, 0), (-3/2, 1/2, 0, 1, 0), (1, 0, 0, 0, 1))	
+			
+			
+(b)	4x + 3y − z + t = 0,		
+	x - y + 2z - t = 0		
+	Escalonamento		
+	"(4, 3, -1, 1 | 0)
+(1, -1, 2, -1 | 0)"	Matriz aumentada	
+	"(1, 3/4, -1/4, 1/4 | 0)
+(1, -1, 2, -1 | 0)"	(1/4) * I -> I	
+	"(1, 3/4, -1/4, 1/4 | 0)
+(0, -7/4, 7/4, -5/4 | 0)"	II - I -> II	
+	"(1, 3/4, -1/4, 1/4 | 0)
+(0, 1, -1, 5/7 | 0)"	(-4/7) * II -> II	
+	"(1, 0, 1/2, -2/7 | 0)
+(0, 1, -1, 5/7 | 0)"	I - (3/4)*II -> I	
+	Equação 1 final	x + (1/2)z - (2/7)t = 0	
+	Equação 2 final	y - z + (5/7)t = 0	
+	x	-(1/2)z + (2/7)t	
+	y	z - (5/7)t	
+	z	z	
+	t	t	
+	Solução:	((-1/2)z + (2/7)t, z - (5/7)t, z, t)	
+	Variáveis livres	z, t	
+	Dimensões	2	
+	Cálculo da base		
+	z	(-1, 2, 2, 0)	
+	t	(2, 5, 0, 7)	
+	Base final	{(-1, 2, 2, 0), (2, 5, 0, 7)}	
+			
+			
+P.14 Sejam:			
+	W1 = {(x, y, z, t) pertence a R^4 | x + y = 0 e z - t = 0}		
+	W2 = {(x, y, z, t) pertence a R^4 | x - y - z + t = 0},		
+	subespaços de R^4.		
+			
+(a) Determine W1 interseção W2 e exiba uma base para este subespaço.			
+			
+(b) Determine W1 + W2 (soma dos subespaços).			
+			
+(c) A soma W1 + W2 é direta? Justifique.			
+			
+(d) W1 + W2 = R^4? Justifique.			
+			
+P.21 Em V = P2(R), o espaço vetorial dos polinômios de grau menor ou igual a dois, considere as bases:			
+	B = {1, x, x^2}		
+	C = {(x - 1)^2, x + 4, 3x}		
+	D = {1 - x^2, x(x + 1), x^2 + 1}		
+			
+	(a) Para o polinômio a(x) = (x + 1)^2 pertencente a V, obtenha as coordenadas de a(x) na base B.		
+	(b) Obtenha as matrizes mudança de base: de C para B; e de D para B.		
+	(c) Utilizando os resultados do item anterior, obtenha as coordenadas de a(x) nas bases C e D.		
+			
+			
+P.23 Para cada uma das transformações lineares abaixo, determine uma base e a dimensão do núcleo e da imagem.			
+(a) T : R^3 -> R dado por T(x, y, z) = x + y - z.			
+(b) T : R^2 -> R^2 dado por T(x, y) = (2x, x + y).			
+(c) T : R^2 -> R^3 dado por T(x, y) = (x + y, x - y, y).			
+(d) T : P2(F) -> P2(F) dado por T(f(t)) = (t^2) * f''(t).			
+(e) T : M2(F) -> M2(F) dado por T(X) = MX + X, onde M =			
+[ 1 1 ]			
+[ 0 0 ]			
+			
+P.27 Seja \(r\subset \mathbb{R}^{3}\) a reta definida por: \(\begin{cases}x+y+z=0\\ x-2y-3z=0\end{cases}\)Obtenha uma transformação linear \(T:\mathbb{R}^{3}\rightarrow \mathbb{R}^{2}\) tal que \(r=\text{Ker}(T)\). Quem é a imagem de \(T\)?			

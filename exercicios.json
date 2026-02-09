@@ -1,0 +1,118 @@
+[
+  {
+    "id": "P.4.b",
+    "titulo": "Verificar Subespaço P.4.b",
+    "selecionado_para_entrega": true,
+    "enunciado": "Em cada um dos casos, verifique se o conjunto $W$ contido no espaço vetorial $V$ é um subespaço do espaço vetorial $V$. \n\n **Caso (b):** $W = \\{(x, y, z) \\in F^3 \\\\|\\ x \\in \\mathbb{Z}\\}, V = F^3$",
+    "tipo": "VERIFICAR_SUBESPACO",
+    "dados_exercicio": {
+      "espaco_base_simbolo": "F",
+      "tipo_espaco": "vetorial_F3",
+      "dimensao": 3,
+      "variaveis_vetor": ["x", "y", "z"],
+      "condicao_w": {
+        "tipo": "componente_restricao",
+        "componente_idx": 0,
+        "restricao_tipo": "is_integer"
+      }
+    },
+    "gabarito": {
+      "eh_subespaco": false,
+      "resultados_teste_auto": {
+        "vetor_nulo": true,
+        "adicao": true,
+        "multiplicacao": false,
+        "contraexemplo_multiplicacao": {
+          "escalar": "1/2",
+          "vetor_w_valor": [1, 0, 0]
+        }
+      },
+      "explicacoes": {
+        "contem_vetor_nulo": "O vetor nulo $(0, 0, 0)$ pertence a $W$, pois a primeira coordenada, $x=0$, é um número inteiro.",
+        "fechado_sob_adicao": "Se $w_1 = (x_1, y_1, z_1)$ e $w_2 = (x_2, y_2, z_2)$ pertencem a $W$, então $x_1$ e $x_2$ são inteiros. A soma $w_1 + w_2 = (x_1+x_2, y_1+y_2, z_1+z_2)$ também pertence a $W$, pois a soma de dois inteiros $x_1+x_2$ ainda é um inteiro.",
+        "fechado_sob_multiplicacao": "A condição falha no fechamento por multiplicação por um escalar real. **Contraexemplo:** Tome o vetor $w = (1, 0, 0) \\in W$ (pois $x=1$ é inteiro) e o escalar $\\lambda = 0.5 \\in \\mathbb{R}$. O produto $\\lambda w = (0.5, 0, 0)$ não pertence a $W$, pois sua primeira coordenada, $x=0.5$, não é um número inteiro."
+      }
+    }
+  },
+  {
+    "id": "P.5.a",
+    "titulo": "Verificar Subespaço P.5.a (Matrizes)",
+    "selecionado_para_entrega": true,
+    "enunciado": "Verifique se o seguinte subconjunto de $M(n, F)$ é um subespaço vetorial. \n\n **Caso (a):** $W_1 = \\{A \\in M(n, F) \\ | \\ tr(A) = 0\\}$",
+    "tipo": "VERIFICAR_SUBESPACO",
+    "dados_exercicio": {
+      "espaco_base_simbolo": "F",
+      "tipo_espaco": "matrizes_MnF",
+      "dimensao_matriz": "n",
+      "condicao_w": {
+        "tipo": "traco_zero"
+      }
+    },
+    "gabarito": {
+      "eh_subespaco": true,
+      "resultados_teste_auto": {
+        "vetor_nulo": true,
+        "adicao": true,
+        "multiplicacao": true
+      },
+      "explicacoes": {
+        "contem_vetor_nulo": "A matriz nula $0$ tem traço $tr(0) = 0$, então $0 \\in W_1$. ",
+        "fechado_sob_adicao": "Se $A, B \\in W_1$, então $tr(A)=0$ e $tr(B)=0$. Como $tr(A+B) = tr(A) + tr(B)$, temos $tr(A+B) = 0+0=0$. Logo, $A+B \\in W_1$. ",
+        "fechado_sob_multiplicacao": "Se $A \\in W_1$ e $\\alpha \\in F$, então $tr(A)=0$. Como $tr(\\alpha A) = \\alpha \\cdot tr(A)$, temos $tr(\\alpha A) = \\alpha \\cdot 0 = 0$. Logo, $\\alpha A \\in W_1$. "
+      }
+    }
+  },
+  {
+    "id": "P.9.a",
+    "titulo": "Base para Espaço-Solução P.9.a",
+    "selecionado_para_entrega": true,
+    "enunciado": "Ache a dimensão e uma base para os espaços solução dos sistemas lineares homogêneos. \n\n **Sistema (a):** \n $$ \\begin{cases} x+y+z+w-t=0 \\ x-y-z+2w-t=0 \\end{cases} $$ ",
+    "tipo": "SISTEMA_HOMOGENEO",
+    "dados_exercicio": {
+      "equacoes": "x+y+z+w-t=0\nx-y-z+2w-t=0"
+    },
+    "gabarito": {
+        "dimensao": 3,
+        "base": ["(0, -1, 1, 0, 0)", "(-3/2, 1/2, 0, 1, 0)", "(1, 0, 0, 0, 1)"],
+        "explicacao": "O sistema escalonado possui 5 variáveis e 2 pivôs, resultando em 3 variáveis livres (dimensão do espaço solução). A base é encontrada expressando as variáveis pivô em termos das variáveis livres e montando os vetores correspondentes."
+    }
+  },
+  {
+    "id": "P.9.b",
+    "titulo": "Base para Espaço-Solução P.9.b",
+    "selecionado_para_entrega": false,
+    "enunciado": "Ache a dimensão e uma base para os espaços solução dos sistemas lineares homogêneos. \n\n **Sistema (b):** \n $$ \\begin{cases} 4x+3y-z+t=0 \\ x-y+2z-t=0 \\end{cases} $$ ",
+    "tipo": "SISTEMA_HOMOGENEO",
+    "dados_exercicio": {
+      "equacoes": "4x+3y-z+t=0\nx-y+2z-t=0"
+    },
+    "gabarito": {
+        "dimensao": 2,
+        "base": ["(-1/2, 1, 1, 0)", "(2/7, -5/7, 0, 1)"],
+        "explicacao": "O sistema escalonado possui 4 variáveis e 2 pivôs, resultando em 2 variáveis livres (z e t). A base é encontrada expressando x e y em termos de z e t."
+    }
+  },
+  {
+    "id": "P.23.c",
+    "titulo": "Núcleo e Imagem P.23.c",
+    "selecionado_para_entrega": true,
+    "enunciado": "Para a transformação linear abaixo, determine uma base e a dimensão do núcleo e da imagem. \n\n **Transformação (c):** $T: \\mathbb{R}^2 \\to \\mathbb{R}^3$ dado por $T(x,y) = (x+y, x-y, y)$",
+    "tipo": "TRANSFORMACAO_LINEAR",
+    "dados_exercicio": {
+        "dominio": "R^2",
+        "contradominio": "R^3",
+        "definicao": "T(x,y) = (x+y, x-y, y)"
+    },
+    "gabarito": {
+        "nucleo": {
+            "base": "Nenhuma (vetor nulo)",
+            "dimensao": 0
+        },
+        "imagem": {
+            "base": ["(1,1,0)", "(1,-1,1)"],
+            "dimensao": 2
+        },
+        "explicacao": "O núcleo é encontrado resolvendo T(x,y)=(0,0,0), que só admite a solução trivial (0,0). A imagem é o espaço gerado pelos vetores T(1,0)=(1,1,0) e T(0,1)=(1,-1,1), que são LI."
+    }
+  }
+]

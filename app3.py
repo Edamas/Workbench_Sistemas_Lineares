@@ -44,7 +44,7 @@ def format_vector_as_tuple_latex(vec, notation_style):
     if not isinstance(vec, sympy.Matrix) or vec.cols != 1:
         return f"\\text{{(Erro: Não é vetor coluna)}}"
     elements_latex = [format_sympy(element, notation_style) for element in vec]
-    return f"\\left( {', '.join(elements_latex)} \\right)"
+    return f"({', '.join(elements_latex)})"
 
 def format_matrix_as_python_tuple(matrix):
     rows_str = []
@@ -179,7 +179,7 @@ def main():
 
         char_poly = A.charpoly(lambda_).as_expr()
         st.markdown("O polinômio característico final é:")
-        st.latex(f"p(λ) = {format_sympy(char_poly, notation_style)} = 0")
+        st.latex(rf"p(λ) = {format_sympy(char_poly, notation_style)} = 0")
         
         st.markdown("#### 2.2. Encontrando as Raízes do Polinômio")
         with st.expander("Detalhes da Resolução do Polinômio"):
@@ -191,12 +191,12 @@ def main():
                 a, b, c = poly.all_coeffs()
                 st.markdown(f"Para `{format_sympy(poly.as_expr(), notation_style)}`, temos `a={format_sympy(a, notation_style)}`, `b={format_sympy(b, notation_style)}`, `c={format_sympy(c, notation_style)}`.")
                 delta = b**2 - 4*a*c
-                st.latex(f"\Delta = b^2 - 4ac = {format_sympy(delta, notation_style)}")
+                st.latex(rf"\Delta = b^2 - 4ac = {format_sympy(delta, notation_style)}")
                 if delta >= 0:
                     lambda1 = (-b + sympy.sqrt(delta)) / (2*a)
                     lambda2 = (-b - sympy.sqrt(delta)) / (2*a)
                     st.markdown("As raízes são:")
-                    st.latex(f"λ_1 = {format_sympy(lambda1, notation_style)}, \; λ_2 = {format_sympy(lambda2, notation_style)}")
+                    st.latex(rf"λ_1 = {format_sympy(lambda1, notation_style)}, \; λ_2 = {format_sympy(lambda2, notation_style)}")
                 else:
                     st.markdown("O discriminante é negativo, indicando raízes complexas. As raízes serão apresentadas abaixo.")
 
@@ -248,11 +248,11 @@ def main():
                     a, b, c = quad_poly.all_coeffs()
                     st.markdown(f"Para `{format_sympy(quad_poly.as_expr(), notation_style)}`, temos `a={format_sympy(a, notation_style)}`, `b={format_sympy(b, notation_style)}`, `c={format_sympy(c, notation_style)}`.")
                     delta = b**2 - 4*a*c
-                    st.latex(f"\Delta = b^2 - 4ac = {format_sympy(delta, notation_style)}")
+                    st.latex(rf"\Delta = b^2 - 4ac = {format_sympy(delta, notation_style)}")
                     lambda2 = (-b + sympy.sqrt(delta)) / (2*a)
                     lambda3 = (-b - sympy.sqrt(delta)) / (2*a)
                     st.markdown("As outras raízes são:")
-                    st.latex(f"λ_2 = {format_sympy(lambda2, notation_style)}, \; λ_3 = {format_sympy(lambda3, notation_style)}")
+                    st.latex(rf"λ_2 = {format_sympy(lambda2, notation_style)}, \; λ_3 = {format_sympy(lambda3, notation_style)}")
                 else:
                     st.markdown("Não foi encontrada uma raiz racional exata por este método de teste.")
                     st.markdown("As raízes são encontradas computacionalmente.")
@@ -262,7 +262,7 @@ def main():
         cleaned_autovalores = [cleanup_expr(v) for v in autovalores]
         
         st.markdown("Os autovalores da matriz A são:")
-        st.latex(f"λ \in {format_sympy(sympy.FiniteSet(*cleaned_autovalores), notation_style)}")
+        st.latex(rf"λ \in {format_sympy(sympy.FiniteSet(*cleaned_autovalores), notation_style)}")
         
         cleaned_eigenvals_dict = {cleanup_expr(k): v for k, v in eigenvals_dict.items()}
         st.markdown("**Análise dos Autovalores:**")
@@ -279,9 +279,27 @@ def main():
         for cleaned_val, cleaned_basis in all_eigenvectors_map.items():
             st.markdown(f"#### 3.1. Autoespaço para λ = {format_sympy(cleaned_val, notation_style)}")
             st.latex(f"\\text{{Resolvendo }}(A - ({format_sympy(cleaned_val, notation_style)})I)v = 0")
+            
+            with st.expander(f"Detalhes do Cálculo de A - ({format_sympy(cleaned_val, notation_style)})I"):
+                lambda_sym = sympy.Symbol('λ') # Define lambda_sym to represent lambda here
+                I_val = sympy.eye(A.rows)
+                lambda_I_matrix = I_val * cleaned_val
+                
+                st.markdown(f"Calculando `({format_sympy(cleaned_val, notation_style)})I`:")
+                st.latex(f"({format_sympy(cleaned_val, notation_style)})I = {format_sympy(I_val, notation_style)} \\cdot {format_sympy(cleaned_val, notation_style)} = {format_sympy(lambda_I_matrix, notation_style)}")
+                
+                char_matrix_eigen = A - lambda_I_matrix
+                st.markdown(f"Calculando `A - ({format_sympy(cleaned_val, notation_style)})I`:")
+                st.latex(f"A - ({format_sympy(cleaned_val, notation_style)})I = {format_sympy(A, notation_style)} - {format_sympy(lambda_I_matrix, notation_style)} = {format_sympy(char_matrix_eigen, notation_style)}")
+                
+                # Optional: Show row reduction of char_matrix_eigen
+                st.markdown("Reduzindo a matriz à forma escalonada:")
+                rref_matrix, pivots = char_matrix_eigen.rref()
+                st.latex(f"\\text{{rref}}(A - ({format_sympy(cleaned_val, notation_style)})I) = {format_sympy(rref_matrix, notation_style)}")
+
             basis_latex = ", ".join([format_vector_as_tuple_latex(vec, notation_style) for vec in cleaned_basis])
             st.markdown("A base para o espaço nulo (kernel) é:")
-            st.latex(f"E_λ({format_sympy(cleaned_val, notation_style)}) = \\text{{gerado por}} \\\\left\\\\{{\ {basis_latex} \\\\right\\\\}}")
+            st.latex(rf"E_λ({format_sympy(cleaned_val, notation_style)}) = \text{{gerado por}} \left\{{ {basis_latex} \right\}}")
         
         is_diagonalizable = all(cleaned_eigenvals_dict.get(v, 0) == len(all_eigenvectors_map.get(v, [])) for v in cleaned_eigenvals_dict)
 

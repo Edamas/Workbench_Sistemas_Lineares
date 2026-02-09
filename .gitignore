@@ -14,3 +14,30 @@ backups/
 html_output/
 markdown_output/
 output/
+
+# User-specified sensitive/personal directories
+secretaria/
+backup/
+resolucoes/
+
+# Common Python ignores
+__pycache__/
+*.pyc
+
+
+# User-specified sensitive/personal directories
+secretaria/
+backup/
+resolucoes/
+
+# Common Python ignores
+*.pyc
+*.o
+*.so
+*.egg
+.mypy_cache/
+.pytest_cache/
+.venv/
+env/
+venv/
+
